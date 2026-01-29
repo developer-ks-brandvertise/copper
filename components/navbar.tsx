@@ -7,6 +7,7 @@ import { Button, buttonVariants } from "./ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import { MenuIcon, XIcon, GlobeIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const links = [
   {
@@ -48,11 +49,14 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const { scrollY } = useScroll();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   
   const navbarOpacity = useTransform(scrollY, [0, 100], [0.95, 0.98]);
   const navbarBlur = useTransform(scrollY, [0, 100], [10, 20]);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -69,13 +73,19 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  // Get the correct logo based on theme
+  // Use White logo for dark mode, Dark logo for light mode
+  const logoSrc = mounted 
+    ? (resolvedTheme === 'dark' ? '/Keshan-Industries-Logo-White-Text.png' : '/Keshan-Industries-Logo-Dark-Text.png')
+    : '/Keshan-Industries-Logo-Dark-Text.png'; // Default to dark text logo during mount
+
   return (
     <>
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'h-16 backdrop-blur-xl bg-background/95 border-b border-border/50 shadow-lg' 
-            : 'h-20 bg-transparent'
+            ? 'h-24 backdrop-blur-xl bg-background border-b border-border/50 shadow-lg' 
+            : 'h-32 bg-transparent'
         }`}
         style={{
           opacity: navbarOpacity,
@@ -91,22 +101,16 @@ export default function Navbar() {
             className="cursor-pointer"
             onClick={() => scrollToSection('#')}
           >
-            <div className={`transition-all duration-300 flex items-center gap-3 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
+            <div className={`transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
               <Image
-                src="/Keshan-Industries-Logo.png"
+                src={logoSrc}
                 alt="Keshan Industries Logo"
-                width={isScrolled ? 40 : 50}
-                height={isScrolled ? 40 : 50}
-                className="transition-all duration-300"
+                width={isScrolled ? 250 : 350}
+                height={isScrolled ? 85 : 115}
+                className="transition-all duration-300 object-contain dark:drop-shadow-none drop-shadow-md"
+                priority
+                style={{ width: 'auto', height: isScrolled ? '85px' : '115px' }}
               />
-              <div>
-                <h1 className="text-xl font-title font-bold tracking-wider text-copper">
-                  KESHAN
-                </h1>
-                <p className="text-copper/80 font-sans font-medium tracking-wider -mt-1 text-xs">
-                  INDUSTRIES
-                </p>
-              </div>
             </div>
           </motion.div>
 
@@ -142,12 +146,12 @@ export default function Navbar() {
                 <GlobeIcon className="w-4 h-4 mr-1" />
                 {selectedLanguage}
               </Button>
-              <div className="absolute top-full right-0 mt-2 w-32 bg-card border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full right-0 mt-2 w-32 bg-card border border-border shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => setSelectedLanguage(lang.code)}
-                    className="w-full px-3 py-2 text-left hover:bg-muted text-sm transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                    className="w-full px-3 py-2 text-left hover:bg-muted text-sm transition-colors duration-200"
                   >
                     {lang.name}
                   </button>
@@ -200,7 +204,7 @@ export default function Navbar() {
           height: isMobileMenuOpen ? "auto" : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="fixed top-20 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border lg:hidden overflow-hidden"
+        className="fixed top-32 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border lg:hidden overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col gap-4">
@@ -241,7 +245,7 @@ export default function Navbar() {
       </motion.div>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-20" />
+      <div className="h-32" />
     </>
   );
 }

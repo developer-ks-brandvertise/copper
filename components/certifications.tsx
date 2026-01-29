@@ -86,13 +86,13 @@ function CertificationBadge({ cert, index }: { cert: Certification; index: numbe
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Certificate Image */}
-      <div className="relative w-32 h-32 bg-card rounded-2xl border border-border hover:border-copper/50 transition-all duration-300 overflow-hidden group-hover:shadow-glow">
+      <div className="relative w-40 h-40 bg-card transition-all duration-300 overflow-hidden group-hover:shadow-glow flex items-center justify-center">
         <Image
           src={`/cert/Certification-0${cert.id}.png`}
           alt={cert.name}
-          width={128}
-          height={128}
-          className="object-contain p-4 filter brightness-90 group-hover:brightness-110 transition-all duration-300"
+          width={160}
+          height={160}
+          className="object-contain filter brightness-90 group-hover:brightness-110 transition-all duration-300"
         />
         
         {/* Category Icon Overlay */}
@@ -155,7 +155,7 @@ export default function Certifications() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-copper/10 text-copper text-sm font-medium rounded-full border border-copper/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-copper/10 text-copper text-sm font-medium border border-copper/20 mb-6">
             <ShieldCheckIcon className="w-4 h-4" />
             Certifications & Trust
           </div>
@@ -174,6 +174,42 @@ export default function Certifications() {
             <CertificationBadge key={cert.id} cert={cert} index={index} />
           ))}
         </div>
+
+        {/* Certificate Images */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex justify-center gap-8 mb-16 flex-wrap"
+        >
+          <div className="w-64 h-80 overflow-hidden shadow-copper">
+            <Image
+              src="/Certificate-1.jpg"
+              alt="Certificate 1"
+              width={256}
+              height={320}
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="w-64 h-80 overflow-hidden shadow-copper">
+            <Image
+              src="/Certificate-2.jpg" 
+              alt="Certificate 2"
+              width={256}
+              height={320}
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="w-64 h-80 overflow-hidden shadow-copper">
+            <Image
+              src="/Certificate-3.jpg"
+              alt="Certificate 3" 
+              width={256}
+              height={320}
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </motion.div>
 
         {/* Trust Indicators */}
         <motion.div

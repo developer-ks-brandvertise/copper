@@ -15,15 +15,17 @@ export default function Partnership() {
 
   return (
     <section id="partnership" className="relative py-24 overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <Image
-          src="/partner.jpg"
-          alt="Partnership"
-          fill
-          className="object-cover brightness-30"
-          priority
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover brightness-30"
+        >
+          <source src="https://res.cloudinary.com/ddneah55w/video/upload/v1769698128/copper-rolling_khbuzu.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-background/80" />
         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
       </div>
@@ -45,7 +47,7 @@ export default function Partnership() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-copper/20 backdrop-blur-sm border border-copper/30 rounded-full text-copper font-medium mb-8"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-copper/20 backdrop-blur-sm border border-copper/30 text-copper font-medium mb-8"
           >
             <UserGroupIcon className="w-5 h-5" />
             Partnership Opportunity

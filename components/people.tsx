@@ -76,7 +76,7 @@ function TeamMemberCard({ member, index }: { member: TeamMember; index: number }
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-copper/30 transition-all duration-500 min-w-[350px] max-w-[400px]"
+      className="group relative bg-card overflow-hidden border border-border hover:border-copper/30 transition-all duration-500 min-w-[350px] max-w-[400px]"
     >
       {/* Image Section */}
       <div className="relative h-64 overflow-hidden">

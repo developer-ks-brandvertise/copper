@@ -117,7 +117,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-copper/30 transition-all duration-500 break-inside-avoid mb-6"
+      className="group relative bg-card overflow-hidden border border-copper/30 shadow-copper transition-all duration-500 break-inside-avoid mb-6"
     >
       <div className={`relative ${cardHeight} overflow-hidden`}>
         <Image
@@ -127,18 +127,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-copper/20 text-copper text-xs font-medium rounded-full border border-copper/30 backdrop-blur-sm">
-            {project.category}
-          </span>
-        </div>
-        {project.capacity && (
-          <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-medium rounded-full border border-emerald-500/30 backdrop-blur-sm">
-              {project.capacity}
-            </span>
-          </div>
-        )}
         
         {/* Content overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -146,32 +134,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-copper transition-colors">
               {project.title}
             </h3>
-            <p className="text-foreground/70 text-sm leading-relaxed mb-4 line-clamp-2">
-              {project.description}
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-            <span className="flex items-center gap-1">
-              <TagIcon className="w-4 h-4" />
-              {project.year}
-            </span>
-            <span>{project.location}</span>
           </div>
 
           <Link
             href={project.href}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "sm" }),
-              "w-full border-copper/30 text-copper hover:bg-copper/10 hover:border-copper transition-all duration-300"
-            )}
+            className="w-full px-4 py-2 bg-gradient-to-r from-copper to-copper/80 text-white text-sm font-medium hover:from-copper/90 hover:to-copper/70 shadow-copper transition-all duration-300 inline-flex items-center justify-center"
           >
             View Details
           </Link>
         </div>
       </div>
 
-      <div className="absolute inset-0 ring-1 ring-inset ring-copper/10 rounded-2xl pointer-events-none group-hover:ring-copper/30 transition-all duration-500" />
+      <div className="absolute inset-0 ring-1 ring-inset ring-copper/30 pointer-events-none transition-all duration-500" />
     </motion.div>
   );
 }
@@ -211,32 +185,9 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={cn(
-                "px-6 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                selectedCategory === category
-                  ? "bg-copper text-white shadow-glow"
-                  : "bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted border border-border"
-              )}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
         {/* Projects Masonry Grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard key={`${project.title}-${selectedCategory}`} project={project} index={index} />
           ))}
         </div>

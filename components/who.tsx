@@ -7,13 +7,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const achievements = [
-  { value: "50+", label: "Years of Excellence", icon: "🏆" },
-  { value: "500K+", label: "Tons Annual Capacity", icon: "⚡" },
-  { value: "35+", label: "Countries Served", icon: "🌍" },
-  { value: "99.9%", label: "Purity Standards", icon: "✨" }
-];
-
 const values = [
   "Ethical and transparent business practices",
   "Quality without compromise", 
@@ -53,7 +46,7 @@ export default function WhoWeAreSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-copper/10 text-copper text-sm font-medium rounded-full border border-copper/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-copper/10 text-copper text-sm font-medium border border-copper/20 mb-6"
             >
               <SparklesIcon className="w-4 h-4" />
               Who We Are
@@ -115,37 +108,11 @@ export default function WhoWeAreSection() {
             >
               <Link
                 href="#about"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-copper to-copper/80 text-white rounded-full font-medium hover:shadow-glow transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-copper to-copper/80 text-white font-medium hover:shadow-glow transition-all duration-300 group"
               >
                 Discover Our Story
                 <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </motion.div>
-
-            {/* Achievements Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
-            >
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={achievement.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
-                  className="text-center group"
-                >
-                  <div className="text-2xl mb-1">{achievement.icon}</div>
-                  <div className="text-2xl font-bold text-copper mb-1 group-hover:text-copper/80 transition-colors">
-                    {achievement.value}
-                  </div>
-                  <div className="text-xs text-slate-400 leading-tight">
-                    {achievement.label}
-                  </div>
-                </motion.div>
-              ))}
             </motion.div>
           </motion.div>
 
@@ -168,24 +135,6 @@ export default function WhoWeAreSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </AspectRatio>
-
-              {/* Floating Stats Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={imageInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="absolute -bottom-6 -left-6 bg-card/90 backdrop-blur-sm border border-border rounded-2xl p-6 shadow-xl"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-copper to-copper/70 rounded-full flex items-center justify-center">
-                    <SparklesIcon className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-foreground">ISO Certified</div>
-                    <div className="text-sm text-slate-400">Quality Assured</div>
-                  </div>
-                </div>
-              </motion.div>
 
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-copper/20 to-transparent rounded-full blur-xl" />

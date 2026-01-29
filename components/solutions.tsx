@@ -106,17 +106,8 @@ export function EachLinkCard({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.6 }}
-      className="group relative bg-card border border-border hover:border-copper/50 rounded-xl overflow-hidden transition-all duration-300"
+      className="group relative bg-card border border-border hover:border-copper/50 overflow-hidden transition-all duration-300"
     >
-      {/* Badge */}
-      {badge && (
-        <div className="absolute top-4 right-4 z-20">
-          <span className="px-3 py-1 bg-copper/20 backdrop-blur-sm text-copper text-xs font-semibold rounded-full border border-copper/30">
-            {badge}
-          </span>
-        </div>
-      )}
-
       {/* Image - Made much bigger */}
       <div className="relative overflow-hidden">
         <AspectRatio ratio={16 / 9}>
