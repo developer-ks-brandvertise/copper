@@ -206,7 +206,7 @@ export default function Projects() {
             <span className="text-gradient">Projects & </span>
             <span className="text-foreground">Showcase</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Discover our world-class facilities and groundbreaking projects that set new standards in copper and brass manufacturing excellence.
           </p>
         </motion.div>
