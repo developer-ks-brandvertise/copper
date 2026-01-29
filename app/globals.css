@@ -1,0 +1,472 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Light mode colors */
+  --background: oklch(0.98 0.006 43);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.65 0.12 35);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.7 0.09 45);
+  --secondary-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.94 0.02 45);
+  --muted-foreground: oklch(0.5 0.01 45);
+  --accent: oklch(0.68 0.11 42);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.5 0.15 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.02 45);
+  --input: oklch(0.9 0.02 45);
+  --ring: oklch(0.65 0.12 35);
+  
+  /* Premium copper color palette */
+  --copper: oklch(0.65 0.12 35);
+  --copper-light: oklch(0.7 0.09 45);
+  --copper-dark: oklch(0.5 0.15 30);
+  --brass: oklch(0.68 0.11 42);
+  --brass-light: oklch(0.73 0.08 48);
+  --brass-dark: oklch(0.6 0.13 38);
+  --industrial-blue: oklch(0.35 0.08 240);
+  --industrial-gray: oklch(0.25 0.005 240);
+  
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius: 1rem;
+  
+  /* Enhanced shadows for premium feel */
+  --shadow-copper: 0 10px 40px -10px rgba(184, 115, 51, 0.3);
+  --shadow-copper-strong: 0 20px 60px -10px rgba(184, 115, 51, 0.4);
+  --shadow-industrial: 0 10px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.dark {
+  /* Premium dark mode with copper accents */
+  --background: oklch(0.05 0.005 240);
+  --foreground: oklch(0.95 0.01 45);
+  --card: oklch(0.08 0.01 240);
+  --card-foreground: oklch(0.95 0.01 45);
+  --popover: oklch(0.08 0.01 240);
+  --popover-foreground: oklch(0.95 0.01 45);
+  --primary: oklch(0.68 0.12 35);
+  --primary-foreground: oklch(0.05 0 0);
+  --secondary: oklch(0.72 0.09 45);
+  --secondary-foreground: oklch(0.05 0 0);
+  --muted: oklch(0.12 0.01 240);
+  --muted-foreground: oklch(0.7 0.02 45);
+  --accent: oklch(0.7 0.11 42);
+  --accent-foreground: oklch(0.05 0 0);
+  --destructive: oklch(0.4 0.13 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.15 0.01 240);
+  --input: oklch(0.15 0.01 240);
+  --ring: oklch(0.68 0.12 35);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-copper: var(--copper);
+  --color-brass: var(--brass);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom utility classes for premium animations and effects */
+.copper-glow {
+  box-shadow: 0 0 20px rgba(184, 115, 51, 0.5), 0 0 40px rgba(184, 115, 51, 0.3);
+}
+
+.copper-glow-strong {
+  box-shadow: 0 0 30px rgba(184, 115, 51, 0.7), 0 0 60px rgba(184, 115, 51, 0.5), 0 0 90px rgba(184, 115, 51, 0.3);
+}
+
+.industrial-gradient {
+  background: linear-gradient(135deg, 
+    oklch(0.05 0.005 240) 0%, 
+    oklch(0.08 0.01 240) 50%, 
+    oklch(0.12 0.015 240) 100%
+  );
+}
+
+.copper-gradient {
+  background: linear-gradient(135deg,
+    oklch(0.5 0.15 30) 0%,
+    oklch(0.65 0.12 35) 50%,
+    oklch(0.7 0.09 45) 100%
+  );
+}
+
+/* Animated background patterns */
+.sparks-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.sparks-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(184, 115, 51, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(184, 115, 51, 0.15) 1px, transparent 1px),
+    radial-gradient(circle at 60% 20%, rgba(184, 115, 51, 0.08) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 80px 80px;
+  animation: sparkle 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-10px); }
+}
+
+/* Scrollbar utilities */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.08 0.01 240);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.65 0.12 35);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.7 0.09 45);
+}
+
+/* Enhanced animation classes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(184, 115, 51, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Fade-in animation for sections */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.fade-in:nth-child(1) { transition-delay: 0.1s; }
+.fade-in:nth-child(2) { transition-delay: 0.2s; }
+.fade-in:nth-child(3) { transition-delay: 0.3s; }
+.fade-in:nth-child(4) { transition-delay: 0.4s; }
+
+/* Text clamp utilities */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-none {
+  display: block;
+  -webkit-line-clamp: none;
+  line-clamp: none;
+  -webkit-box-orient: initial;
+  overflow: visible;
+}
+
+/* Premium button hover effects */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+/* Card hover elevations */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-copper-strong);
+}
+
+/* Enhanced shadow effects */
+.shadow-lift {
+  box-shadow: 
+    0 10px 40px -12px rgba(0, 0, 0, 0.3),
+    0 20px 80px -12px rgba(184, 115, 51, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Additional premium hover effects */
+.copper-glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(184, 115, 51, 0.4), 0 0 40px rgba(184, 115, 51, 0.2);
+}
+
+/* Enhanced card effects */
+.card-hover-lift {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px -10px rgba(184, 115, 51, 0.3), 
+              0 10px 20px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Rotating border animation */
+.rotating-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.rotating-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, transparent, rgba(184, 115, 51, 0.4), transparent);
+  border-radius: inherit;
+  animation: rotate 3s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Premium text glow */
+.text-glow {
+  text-shadow: 0 0 10px rgba(184, 115, 51, 0.5),
+               0 0 20px rgba(184, 115, 51, 0.3),
+               0 0 40px rgba(184, 115, 51, 0.1);
+}
+
+/* Industrial grid pattern */
+.industrial-pattern {
+  background-image: 
+    linear-gradient(rgba(184, 115, 51, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 115, 51, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Breathing animation */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Flow animation for copper streams */
+@keyframes flow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.copper-flow {
+  background: linear-gradient(45deg, 
+    transparent 25%, 
+    rgba(184, 115, 51, 0.2) 25%, 
+    rgba(184, 115, 51, 0.2) 50%, 
+    transparent 50%,
+    transparent 75%,
+    rgba(184, 115, 51, 0.2) 75%);
+  background-size: 20px 20px;
+  animation: flow 2s linear infinite;
+}
+
+/* Loading shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(184, 115, 51, 0.2), 
+    transparent
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Typography utilities for new fonts */
+.font-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+}
+
+.font-sans {
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+/* Enhanced copper-only gradients - matching button gradient exactly */
+.text-gradient {
+  background: linear-gradient(135deg, 
+    oklch(0.5 0.15 30) 0%,
+    oklch(0.65 0.12 35) 50%,
+    oklch(0.7 0.09 45) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-copper-text {
+  background: linear-gradient(135deg, 
+    oklch(0.5 0.15 30) 0%,
+    oklch(0.65 0.12 35) 50%,
+    oklch(0.7 0.09 45) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-copper-bg {
+  background: linear-gradient(135deg, 
+    oklch(0.5 0.15 30) 0%,
+    oklch(0.65 0.12 35) 50%,
+    oklch(0.7 0.09 45) 100%
+  );
+}
+
+/* Button gradient - same as title backgrounds */
+.button-gradient {
+  background: linear-gradient(135deg, 
+    oklch(0.5 0.15 30) 0%,
+    oklch(0.65 0.12 35) 50%,
+    oklch(0.7 0.09 45) 100%
+  );
+}
+
+/* Legacy card styles - keeping for compatibility */
+.card-wrapper {
+  transition: box-shadow 0.3s ease;
+  box-shadow: 1px -1px 0px #e9a483, 2px 1px 8px #e9a483;
+}
+
+.solution-card-wrapper {
+  box-shadow: none;
+}
+
+.solution-card-wrapper:hover {
+  box-shadow: 0px 0px 60px #ffaa501f, 0px 0px 40px #ffaa501f;
+}
+
+.manufactor-img {
+  box-shadow: 20px -20px 180px 12px #ffaa501f, 20px -20px 40px 3px #ffaa501f;
+}
+
+.circle-wrapper {
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0px 0px 50px #f391281f, 0px 0px 50px #c386441f;
+}
