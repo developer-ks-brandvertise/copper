@@ -74,7 +74,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed font-sans max-w-2xl"
             >
-              Precision-engineered copper and brass solutions manufactured responsibly in India and trusted by industries worldwide.
+              Precision Engineered copper and brass solutions manufactured responsibly in India and trusted by industries worldwide.
             </motion.p>
 
             {/* CTA Buttons */}
