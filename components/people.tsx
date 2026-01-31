@@ -187,24 +187,6 @@ export default function People() {
           ))}
         </div>
 
-        {/* Pyramid Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 flex justify-center"
-        >
-          <div className="relative min-h-[500px] flex items-center justify-center">
-            <Image
-              src="/Pyramid.png"
-              alt="Keshan Industries Pyramid"
-              width={500}
-              height={500}
-              className="object-contain min-h-[500px]"
-            />
-          </div>
-        </motion.div>
-
         {/* Join Our Team CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

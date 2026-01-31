@@ -128,7 +128,7 @@ export default function WhoWeAreSection() {
             <div className="relative">
               <AspectRatio ratio={4/5} className="rounded-2xl overflow-hidden">
                 <Image
-                  src="/who.jpg"
+                  src="/copper-about-us.jpg"
                   alt="Keshan Industries Manufacturing Facility"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"

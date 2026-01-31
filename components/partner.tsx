@@ -22,12 +22,12 @@ export default function Partnership() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover brightness-30"
+          className="w-full h-full object-cover brightness-50"
         >
           <source src="https://res.cloudinary.com/ddneah55w/video/upload/v1769698128/copper-rolling_khbuzu.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       </div>
 
       {/* Animated Background Elements */}

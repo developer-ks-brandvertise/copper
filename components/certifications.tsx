@@ -86,7 +86,7 @@ function CertificationBadge({ cert, index }: { cert: Certification; index: numbe
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Certificate Image */}
-      <div className="relative w-40 h-40 bg-card transition-all duration-300 overflow-hidden group-hover:shadow-glow flex items-center justify-center">
+      <div className="relative w-40 h-40 transition-all duration-300 overflow-hidden group-hover:shadow-glow flex items-center justify-center">
         <Image
           src={`/cert/Certification-0${cert.id}.png`}
           alt={cert.name}
@@ -169,10 +169,12 @@ export default function Certifications() {
         </motion.div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 mb-16">
-          {certifications.map((cert, index) => (
-            <CertificationBadge key={cert.id} cert={cert} index={index} />
-          ))}
+        <div className="flex justify-center mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {certifications.map((cert, index) => (
+              <CertificationBadge key={cert.id} cert={cert} index={index} />
+            ))}
+          </div>
         </div>
 
         {/* Certificate Images */}
